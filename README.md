@@ -63,7 +63,7 @@ options:
   --min-prob           Minimum probability of being reported as an ambiguous site. [0.05]
   --min-gap-prob       Minimum probability of replacing the ancestral state with a gap. [0.5]
   --fast               Use -fast option in IQ-TREE [FLASE]
-  --model              Input substitution model for IQ-TREE. [None]
+  --model              Specify substitution model for IQ-TREE. [None]
   --stop-pseudo-codon  Stop calculation of pvalues of pseudo-codon [FLASE]
   --asr-only           Skip building tree and reconstruct ancestral states only [FLASE]
   -v, --version        show program's version number and exit

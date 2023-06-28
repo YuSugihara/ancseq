@@ -93,7 +93,7 @@ class Params(object):
                             action='store',
                             default=None,
                             type=str,
-                            help='Input substitution model for IQ-TREE. [None]',
+                            help='Specify substitution model for IQ-TREE. [None]',
                             metavar='')
         
         parser.add_argument('--stop-pseudo-codon',
