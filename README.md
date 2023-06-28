@@ -134,7 +134,7 @@ ancseq -s test_nuc.fasta \
 
 `-o` : Name of the output directory. The given name should not exist.
 
-`--fast` : use ```-fast``` option in IQ-TREE.
+`--fast` : Use ```-fast``` option in IQ-TREE.
 
 
 ## Outputs
