@@ -108,7 +108,7 @@ ancseq -s test_nuc.fasta \
 **!!!WARNING!!!** The codon mode can take a very long time to build a phylogenetic tree. Therefore, we would recommend to run ancseq in DNA mode even if your alignmment is codon-based.
 
 ```bash
-ancseq -s test_nuc.fasta \
+ancseq -s test_codon.fasta \
        -m CODON \
        -o out_dir
 ```
