@@ -16,7 +16,7 @@
   + [IQ-TREE command 1 : Building a phylogenetic tree](#IQ-TREE-command-1)
   + [IQ-TREE command 2 : Reconstructing ancestral sequences](#IQ-TREE-command-2)
   + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#IQ-TREE-command-3)
-- [What is a pseudo-codon probability in ancseq?](#What-is-ancseq)
+- [What is a pseudo-codon probability in ancseq?](#What-is-a-pseudo-codon-probability)
 
 
 ## What is ancseq?
@@ -245,3 +245,5 @@ iqtree -asr \
        1> /OUT_DIR/20_indels/20_iqtree.out \
        2> /OUT_DIR/20_indels/20_iqtree.err
 ```
+
+## What is a pseudo-codon probability in ancseq?
