@@ -21,7 +21,7 @@ class Params(object):
     def ancseq_options(self):
         parser = argparse.ArgumentParser(description='ancseq version {}'.format(__version__),
                                          formatter_class=argparse.RawTextHelpFormatter)
-        parser.usage = 'ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>] [-f]'
+        parser.usage = 'ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]'
 
         # set options
         parser.add_argument('-s',

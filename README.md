@@ -48,7 +48,7 @@ conda activate ancseq
 
 ```bash
 $ ancseq -h
-usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>] [-f]
+usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
 ancseq version 1.0.0
 
