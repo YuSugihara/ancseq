@@ -1,0 +1,9 @@
+name: ancseq
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+  - defaults
+dependencies:
+  - iqtree=2.2.0
+  - biopython=1.80
