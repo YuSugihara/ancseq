@@ -15,7 +15,7 @@
 
 
 ## What is ancseq?
-<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.pdf" width=200>
+<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=200>
 Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to do ancestral sequence reconstruction using [IQ-TREE](http://www.iqtree.org).
 
 #### Citation
