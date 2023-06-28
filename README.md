@@ -85,7 +85,7 @@ ancseq -s test_nuc.fasta \
 
 `-s` :  Nucleotide sequence alignment in fasta format.
 
-`-m` :  Sequence type
+`-m` :  Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -99,7 +99,7 @@ ancseq -s test_nuc.fasta \
 
 `-s` :  Amino acid sequence alignment in fasta format.
 
-`-m` :  Sequence type
+`-m` :  Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -115,7 +115,7 @@ ancseq -s test_codon.fasta \
 
 `-s` :  Codon sequence alignment in fasta format.
 
-`-m` :  Sequence type
+`-m` :  Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -130,7 +130,7 @@ ancseq -s test_nuc.fasta \
 
 `-s` :  Nucleotide sequence alignment in fasta format.
 
-`-m` :  Sequence type
+`-m` :  Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
