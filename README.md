@@ -13,6 +13,9 @@
   + [Example 4 : Running ancseq with ```--fast``` option](#Example-4--Running-ancseq-with---fast-option)
 - [Outputs](#Outputs)
 - [Workflow of ancseq](#Workflow-of-ancseq)
+  + [IQ-TREE command 1](#IQ-TREE-command-1) to build a phylogenetic tree.
+  + [IQ-TREE command 2](#IQ-TREE-command-2) to reconstruct ancestral sequences.
+  + [IQ-TREE command 3](#IQ-TREE-command-3) to reconstruct inserstions and deletions (INDELs).
 
 
 ## What is ancseq?
@@ -31,9 +34,10 @@ Ancestral sequence reconstruction is a technique to reconstruct ancestral states
 
 #### Python (>=3.5) libraries
 - [biopython](https://biopython.org)
+
 ### Installation using conda
 You can install ancseq using [anaconda](https://www.anaconda.com).
-```
+```bash
 git clone https://github.com/YuSugihara/ancseq.git
 cd ancseq
 conda env create -f ancseq.yml
@@ -42,7 +46,7 @@ conda activate ancseq
 
 ## Usage
 
-```
+```bash
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>] [-f]
 
@@ -85,7 +89,8 @@ ancseq -s test_nuc.fasta \
 `-o` : Name of the output directory. The given name should not exist.
 
 ### Example 2 : Running ancseq for amino acid sequence alignment
-```
+
+```bash
 ancseq -s test_nuc.fasta \
        -m AA \
        -o out_dir
@@ -98,8 +103,10 @@ ancseq -s test_nuc.fasta \
 `-o` : Name of the output directory. The given name should not exist.
 
 ### Example 3 : Running ancseq for codon sequence alignment
+
 **The codon mode can take a very long time!**
-```
+
+```bash
 ancseq -s test_nuc.fasta \
        -m CODON \
        -o out_dir
@@ -112,7 +119,8 @@ ancseq -s test_nuc.fasta \
 `-o` : Name of the output directory. The given name should not exist.
 
 ### Example 4 : Running ancseq with ```--fast``` option
-```
+
+```bash
 ancseq -s test_nuc.fasta \
        -m DNA \
        -o out_dir \
@@ -182,9 +190,55 @@ Inside of `OUT_DIR` is like below.
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
 - [IQ-TREE command 1](#IQ-TREE-command-1) to build a phylogenetic tree.
-- [IQ-TREE command 2](#IQ-TREE-command-2) to reconstruct ancestral sequences reconstruction.
-- [IQ-TREE command 3](#IQ-TREE-command-3) to reconstruct inserstions or deletions (INDELs).
+- [IQ-TREE command 2](#IQ-TREE-command-2) to reconstruct ancestral sequences.
+- [IQ-TREE command 3](#IQ-TREE-command-3) to reconstruct inserstions and deletions (INDELs).
 
-### IQ-TREE command 1 
+### IQ-TREE command 1
+
+```bash
+iqtree -s ${INPUT_FASTA} \
+       -st ${SEQ_TYPE} \
+       -T ${NUM_THREADS} \
+       -B ${NUM_BOOTSTRAP} \
+       -m MFP \
+       1> /OUT_DIR/00_tree/00_iqtree.out \
+       2> /OUT_DIR/00_tree/00_iqtree.err
+```
+
+```bash
+iqtree -s ${INPUT_FASTA} \
+       -st ${SEQ_TYPE} \
+       -T ${NUM_THREADS} \
+       --alrt ${NUM_BOOTSTRAP} \
+       -m MFP \
+       --fast \
+       1> /OUT_DIR/00_tree/00_iqtree.out \
+       2> /OUT_DIR/00_tree/00_iqtree.err
+```
+
 ### IQ-TREE command 2
+
+```bash
+iqtree -asr \
+       -s ${INPUT_FASTA} \
+       -te /OUT_DIR/00_tree/${INPUT_FASTA}.treefile \
+       -st ${SEQ_TYPE} \
+       -T ${NUM_THREADS} \
+       -m ${MODEL} \
+       1> /OUT_DIR/10_asr/10_iqtree.out \
+       2> /OUT_DIR/10_asr/10_iqtree.err
+```
+
 ### IQ-TREE command 3
+
+```bash
+iqtree -asr \
+       -s ${INPUT_FASTA} \
+       -te /OUT_DIR/00_tree/${INPUT_FASTA}.treefile \
+       -st BIN \
+       -T ${NUM_THREADS} \
+       -blfix \
+       -m JC2 \
+       1> /OUT_DIR/20_indels/20_iqtree.out \
+       2> /OUT_DIR/20_indels/20_iqtree.err
+```
