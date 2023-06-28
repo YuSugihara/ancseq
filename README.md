@@ -13,9 +13,9 @@
   + [Example 4 : Running ancseq with ```--fast``` option](#Example-4--Running-ancseq-with---fast-option)
 - [Outputs](#Outputs)
 - [Workflow of ancseq](#Workflow-of-ancseq)
-  + [IQ-TREE command 1](#IQ-TREE-command-1) to build a phylogenetic tree.
-  + [IQ-TREE command 2](#IQ-TREE-command-2) to reconstruct ancestral sequences.
-  + [IQ-TREE command 3](#IQ-TREE-command-3) to reconstruct inserstions and deletions (INDELs).
+  + [IQ-TREE command 1 to build a phylogenetic tree](#IQ-TREE-command-1)
+  + [IQ-TREE command 2 to reconstruct ancestral sequences](#IQ-TREE-command-2)
+  + [IQ-TREE command 3 to reconstruct inserstions and deletions (INDELs)](#IQ-TREE-command-3)
 
 
 ## What is ancseq?
