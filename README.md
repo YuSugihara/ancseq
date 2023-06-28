@@ -13,9 +13,10 @@
   + [Example 4 : Running ancseq with ```--fast``` option](#Example-4--Running-ancseq-with---fast-option)
 - [Outputs](#Outputs)
 - [Workflow of ancseq](#Workflow-of-ancseq)
-  + [IQ-TREE command 1 to build a phylogenetic tree](#IQ-TREE-command-1)
-  + [IQ-TREE command 2 to reconstruct ancestral sequences](#IQ-TREE-command-2)
-  + [IQ-TREE command 3 to reconstruct inserstions and deletions (INDELs)](#IQ-TREE-command-3)
+  + [IQ-TREE command 1 : Building a phylogenetic tree](#IQ-TREE-command-1)
+  + [IQ-TREE command 2 : Reconstructing ancestral sequences](#IQ-TREE-command-2)
+  + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#IQ-TREE-command-3)
+- [What is a pseudo-codon probability in ancseq?](#What-is-ancseq)
 
 
 ## What is ancseq?
@@ -36,7 +37,7 @@ Ancestral sequence reconstruction is a technique to reconstruct ancestral states
 - [biopython](https://biopython.org)
 
 ### Installation using conda
-You can install ancseq using [anaconda](https://www.anaconda.com).
+You can install ancseq with the dependencies using [anaconda](https://www.anaconda.com).
 ```bash
 git clone https://github.com/YuSugihara/ancseq.git
 cd ancseq
@@ -104,7 +105,7 @@ ancseq -s test_nuc.fasta \
 
 ### Example 3 : Running ancseq for codon sequence alignment
 
-**The codon mode can take a very long time!**
+**!!!WARNING!!!** The codon mode can take a very long time to build a phylogenetic tree. Therefore, we would recommend to run ancseq in DNA mode even if your alignmment is codon-based.
 
 ```bash
 ancseq -s test_nuc.fasta \
@@ -189,9 +190,9 @@ Inside of `OUT_DIR` is like below.
 
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
-- [IQ-TREE command 1](#IQ-TREE-command-1) to build a phylogenetic tree.
-- [IQ-TREE command 2](#IQ-TREE-command-2) to reconstruct ancestral sequences.
-- [IQ-TREE command 3](#IQ-TREE-command-3) to reconstruct inserstions and deletions (INDELs).
+- [IQ-TREE command 1](#IQ-TREE-command-1) : Building a phylogenetic tree.
+- [IQ-TREE command 2](#IQ-TREE-command-2) : Reconstructing ancestral sequences.
+- [IQ-TREE command 3](#IQ-TREE-command-3) : Reconstructing inserstions and deletions (INDELs).
 
 ### IQ-TREE command 1
 
