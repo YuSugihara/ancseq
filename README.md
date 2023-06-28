@@ -206,6 +206,8 @@ iqtree -s ${INPUT_FASTA} \
        2> /OUT_DIR/00_tree/00_iqtree.err
 ```
 
+If you specify the ```--fast``` option in ancseq, the IQ-TREE command 1 will change as follows.
+
 ```bash
 iqtree -s ${INPUT_FASTA} \
        -st ${SEQ_TYPE} \
