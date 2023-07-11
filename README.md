@@ -293,6 +293,6 @@ iqtree -asr \
 
 `-blfix` : Fix branch lengths of tree passed via `-t` or `-te`.
 
-`-m JC2` : Model name.
+`-m JC2` : Jukes-Cantor type model for binary data.
 
 ## What is a pseudo-codon probability in ancseq?
