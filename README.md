@@ -295,4 +295,11 @@ iqtree -asr \
 
 `-m JC2` : Jukes-Cantor type model for binary data.
 
+#### References
+
+1. Aadland K, Pugh C, Kolaczkowski B. 2019. High-Throughput Reconstruction of Ancestral Protein Sequence, Structure, and Molecular Function. In: Sikosek T ed. Computational Methods in Protein Evolution. Methods in Molecular Biology. New York, NY: Springer, 135–170. DOI: [10.1007/978-1-4939-8736-8_8](https://doi.org/10.1007/978-1-4939-8736-8_8).
+
+2. VanAntwerp J, Finneran P, Dolgikh B, Woldring D. 2022. Ancestral Sequence Reconstruction and Alternate Amino Acid States Guide Protein Library Design for Directed Evolution. In: Traxlmayr MW ed. Yeast Surface Display. Methods in Molecular Biology. New York, NY: Springer US, 75–86. DOI: [10.1007/978-1-0716-2285-8_4](https://doi.org/10.1007/978-1-0716-2285-8_4).
+
+
 ## What is a pseudo-codon probability in ancseq?
