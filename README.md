@@ -83,9 +83,9 @@ ancseq -s test_nuc.fasta \
        -o out_dir
 ```
 
-`-s` :  Nucleotide sequence alignment in fasta format.
+`-s` : Nucleotide sequence alignment in fasta format.
 
-`-m` :  Sequence type.
+`-m` : Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -97,9 +97,9 @@ ancseq -s test_nuc.fasta \
        -o out_dir
 ```
 
-`-s` :  Amino acid sequence alignment in fasta format.
+`-s` : Amino acid sequence alignment in fasta format.
 
-`-m` :  Sequence type.
+`-m` : Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -113,9 +113,9 @@ ancseq -s test_codon.fasta \
        -o out_dir
 ```
 
-`-s` :  Codon sequence alignment in fasta format.
+`-s` : Codon sequence alignment in fasta format.
 
-`-m` :  Sequence type.
+`-m` : Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -128,9 +128,9 @@ ancseq -s test_nuc.fasta \
        --fast
 ```
 
-`-s` :  Nucleotide sequence alignment in fasta format.
+`-s` : Nucleotide sequence alignment in fasta format.
 
-`-m` :  Sequence type.
+`-m` : Sequence type.
 
 `-o` : Name of the output directory. The given name should not exist.
 
@@ -206,6 +206,16 @@ iqtree -s ${INPUT_FASTA} \
        2> /OUT_DIR/00_tree/00_iqtree.err
 ```
 
+`-s` : Sequence alignment in fasta format.
+
+`-st` : Sequence type.
+
+`-T` : Number of threads.
+
+`-B` : Replicates for ultrafast bootstrap.
+
+`-m MFP` : Extended model selection followed by tree inference.
+
 If you specify the ```--fast``` option in ancseq, the IQ-TREE command 1 will change as follows.
 
 ```bash
@@ -218,6 +228,18 @@ iqtree -s ${INPUT_FASTA} \
        1> /OUT_DIR/00_tree/00_iqtree.out \
        2> /OUT_DIR/00_tree/00_iqtree.err
 ```
+
+`-s` : Sequence alignment in fasta format.
+
+`-st` : Sequence type.
+
+`-T` : Number of threads.
+
+`--alrt` : Replicates for SH approximate likelihood ratio test.
+
+`-m MFP` : Extended model selection followed by tree inference.
+
+`--fast` : Fast search to resemble FastTree.
 
 ### IQ-TREE command 2
 
@@ -232,6 +254,19 @@ iqtree -asr \
        2> /OUT_DIR/10_asr/10_iqtree.err
 ```
 
+`-asr` : Ancestral state reconstruction by empirical Bayes.
+
+`-s` : Sequence alignment in fasta format.
+
+`-te` : Tree file.
+
+`-st` : Sequence type.
+
+`-T` : Number of threads.
+
+`-m` : Model name.
+
+
 ### IQ-TREE command 3
 
 ```bash
@@ -245,5 +280,19 @@ iqtree -asr \
        1> /OUT_DIR/20_indels/20_iqtree.out \
        2> /OUT_DIR/20_indels/20_iqtree.err
 ```
+
+`-asr` : Ancestral state reconstruction by empirical Bayes.
+
+`-s` : Sequence alignment in fasta format.
+
+`-te` : Tree file.
+
+`-st BIN` : Binary sequence type.
+
+`-T` : Number of threads.
+
+`-blfix` : Fix branch lengths of tree passed via `-t` or `-te`.
+
+`-m JC2` : Model name.
 
 ## What is a pseudo-codon probability in ancseq?
