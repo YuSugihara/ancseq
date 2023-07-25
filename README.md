@@ -3,20 +3,20 @@
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
-- [Installation](#Installation)
-  + [Dependencies](#Dependencies)
-  + [Installation using bioconda](#Installation-using-bioconda)
-- [Usage](#Usage)
-  + [Example 1 : Running ancseq for nucleotide sequence alignment](#Example-1--Running-ancseq-for-nucleotide-sequence-alignment)
-  + [Example 2 : Running ancseq for amino acid sequence alignment](#Example-2--Running-ancseq-for-amino-acid-sequence-alignment)
-  + [Example 3 : Running ancseq for codon sequence alignment](#Example-3--Running-ancseq-for-codon-sequence-alignment)
-  + [Example 4 : Running ancseq with ```--fast``` option](#Example-4--Running-ancseq-with---fast-option)
-- [Outputs](#Outputs)
-- [Workflow of ancseq](#Workflow-of-ancseq)
-  + [IQ-TREE command 1 : Building a phylogenetic tree](#IQ-TREE-command-1)
-  + [IQ-TREE command 2 : Reconstructing ancestral sequences](#IQ-TREE-command-2)
-  + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#IQ-TREE-command-3)
-- [What is a pseudo-codon probability in ancseq?](#What-is-a-pseudo-codon-probability)
+- [Installation](#installation)
+  + [Dependencies](#dependencies)
+  + [Installation using bioconda](#installation-using-bioconda)
+- [Usage](#usage)
+  + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--Running-ancseq-for-nucleotide-sequence-alignment)
+  + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--Running-ancseq-for-amino-acid-sequence-alignment)
+  + [Example 3 : Running ancseq for codon sequence alignment](#example-3--Running-ancseq-for-codon-sequence-alignment)
+  + [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
+- [Outputs](#outputs)
+- [Workflow of ancseq](#workflow-of-ancseq)
+  + [IQ-TREE command 1 : Building a phylogenetic tree](#iq-tree-command-1)
+  + [IQ-TREE command 2 : Reconstructing ancestral sequences](#iq-tree-command-2)
+  + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#iq-tree-command-3)
+- [What is a pseudo-codon probability in ancseq?](#what-is-a-pseudo-codon-probability)
 
 
 ## What is ancseq?
@@ -70,10 +70,10 @@ options:
   -v, --version        show program's version number and exit
 ```
 
-+ [Example 1 : Running ancseq for nucleotide sequence alignment](#Example-1--Running-ancseq-for-nucleotide-sequence-alignment)
-+ [Example 2 : Running ancseq for amino acid sequence alignment](#Example-2--Running-ancseq-for-amino-acid-sequence-alignment)
-+ [Example 3 : Running ancseq for codon sequence alignment](#Example-3--Running-ancseq-for-codon-sequence-alignment)
-+ [Example 4 : Running ancseq with ```--fast``` option](#Example-4--Running-ancseq-with---fast-option)
++ [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--Running-ancseq-for-nucleotide-sequence-alignment)
++ [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--Running-ancseq-for-amino-acid-sequence-alignment)
++ [Example 3 : Running ancseq for codon sequence alignment](#example-3--Running-ancseq-for-codon-sequence-alignment)
++ [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
 
 
 ### Example 1 : Running ancseq for nucleotide sequence alignment
@@ -190,9 +190,9 @@ Inside of `OUT_DIR` is like below.
 
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
-- [IQ-TREE command 1](#IQ-TREE-command-1) : Building a phylogenetic tree.
-- [IQ-TREE command 2](#IQ-TREE-command-2) : Reconstructing ancestral sequences.
-- [IQ-TREE command 3](#IQ-TREE-command-3) : Reconstructing inserstions and deletions (INDELs).
+- [IQ-TREE command 1](#iq-tree-command-1) : Building a phylogenetic tree.
+- [IQ-TREE command 2](#iq-tree-command-2) : Reconstructing ancestral sequences.
+- [IQ-TREE command 3](#iq-tree-command-3) : Reconstructing inserstions and deletions (INDELs).
 
 ### IQ-TREE command 1
 
