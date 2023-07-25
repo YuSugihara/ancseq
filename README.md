@@ -5,7 +5,7 @@
 - [What is ancseq?](#what-is-ancseq)
 - [Installation](#installation)
   + [Dependencies](#dependencies)
-  + [Installation using bioconda](#installation-using-conda)
+  + [Installation using conda](#installation-using-conda)
 - [Usage](#usage)
   + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
   + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
