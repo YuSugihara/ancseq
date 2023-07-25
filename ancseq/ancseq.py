@@ -30,22 +30,41 @@ class ancseq(object):
         os.mkdir(out_dir_00)
         shutil.copyfile(self.args.seq, seq)
         if self.args.fast:
-            cmd = f'iqtree -s {seq} \
-                           -st {self.args.mode} \
-                           -T {self.args.threads} \
-                           --alrt {self.args.bootstrap} \
-                           -m MFP \
-                           --fast \
-                           1> {out_dir_00}/00_iqtree.out \
-                           2> {out_dir_00}/00_iqtree.err'
+            if self.args.model == None:
+                cmd = f'iqtree -s {seq} \
+                               -st {self.args.mode} \
+                               -T {self.args.threads} \
+                               --alrt {self.args.bootstrap} \
+                               -m MFP \
+                               --fast \
+                               1> {out_dir_00}/00_iqtree.out \
+                               2> {out_dir_00}/00_iqtree.err'
+            else:
+                cmd = f'iqtree -s {seq} \
+                               -st {self.args.mode} \
+                               -T {self.args.threads} \
+                               --alrt {self.args.bootstrap} \
+                               -m {self.args.model} \
+                               --fast \
+                               1> {out_dir_00}/00_iqtree.out \
+                               2> {out_dir_00}/00_iqtree.err'
         else:
-            cmd = f'iqtree -s {seq} \
-                           -st {self.args.mode} \
-                           -T {self.args.threads} \
-                           -B {self.args.bootstrap} \
-                           -m MFP \
-                           1> {out_dir_00}/00_iqtree.out \
-                           2> {out_dir_00}/00_iqtree.err'
+            if self.args.model == None:
+                cmd = f'iqtree -s {seq} \
+                               -st {self.args.mode} \
+                               -T {self.args.threads} \
+                               -B {self.args.bootstrap} \
+                               -m MFP \
+                               1> {out_dir_00}/00_iqtree.out \
+                               2> {out_dir_00}/00_iqtree.err'
+            else:
+                cmd = f'iqtree -s {seq} \
+                               -st {self.args.mode} \
+                               -T {self.args.threads} \
+                               -B {self.args.bootstrap} \
+                               -m {self.args.model} \
+                               1> {out_dir_00}/00_iqtree.out \
+                               2> {out_dir_00}/00_iqtree.err'
         cmd = clean_cmd(cmd)
         try:
             sbp.run(cmd,
@@ -61,16 +80,15 @@ class ancseq(object):
               flush=True)
         
     def check_best_model(self):
-        if self.args.model == None:
-            iqtree_log = os.path.join(self.args.out, '00_tree', f'{os.path.basename(self.args.seq)}.log')
-            with open(iqtree_log) as log:
-                for line in log:
-                    if line.startswith('Best-fit model:'):
-                        self.args.model = line.split()[2]
-                        print(time_stamp(),
-                            f'The best model of IQ-TREE was {self.args.model}.',
-                            flush=True)
-        
+        iqtree_log = os.path.join(self.args.out, '00_tree', f'{os.path.basename(self.args.seq)}.log')
+        with open(iqtree_log) as log:
+            for line in log:
+                if line.startswith('Best-fit model:'):
+                    self.args.model = line.split()[2]
+                    print(time_stamp(),
+                        f'The best model of IQ-TREE was {self.args.model}.',
+                        flush=True)
+    
     def reconstruct_ancestral_state(self):
         print(time_stamp(),
               'Reconstructing ancestral state...',
@@ -365,7 +383,8 @@ class ancseq(object):
             shutil.copyfile(f'{self.args.seq}.log', f'{seq}.log')
         else:
             self.built_tree()
-        self.check_best_model()
+        if self.args.model == None:
+            self.check_best_model()
         self.reconstruct_ancestral_state()
         self.reconstruct_indels()
         self.merge_results()
