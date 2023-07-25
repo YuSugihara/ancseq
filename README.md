@@ -2,7 +2,7 @@
 #### Version 1.0.0
 
 ## Table of contents
-- [What is ancseq?](#What-is-ancseq)
+- [What is ancseq?](#what-is-ancseq)
 - [Installation](#Installation)
   + [Dependencies](#Dependencies)
   + [Installation using bioconda](#Installation-using-bioconda)
