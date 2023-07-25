@@ -86,7 +86,7 @@ class ancseq(object):
                 if line.startswith('Best-fit model:'):
                     self.args.model = line.split()[2]
                     print(time_stamp(),
-                        f'The best model of IQ-TREE was {self.args.model}.',
+                        f'The best model in IQ-TREE was {self.args.model}.',
                         flush=True)
     
     def reconstruct_ancestral_state(self):
