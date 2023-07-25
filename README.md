@@ -5,11 +5,11 @@
 - [What is ancseq?](#what-is-ancseq)
 - [Installation](#installation)
   + [Dependencies](#dependencies)
-  + [Installation using bioconda](#installation-using-bioconda)
+  + [Installation using bioconda](#installation-using-conda)
 - [Usage](#usage)
-  + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--Running-ancseq-for-nucleotide-sequence-alignment)
-  + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--Running-ancseq-for-amino-acid-sequence-alignment)
-  + [Example 3 : Running ancseq for codon sequence alignment](#example-3--Running-ancseq-for-codon-sequence-alignment)
+  + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
+  + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
+  + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
   + [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
 - [Outputs](#outputs)
 - [Workflow of ancseq](#workflow-of-ancseq)
@@ -70,10 +70,10 @@ options:
   -v, --version        show program's version number and exit
 ```
 
-+ [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--Running-ancseq-for-nucleotide-sequence-alignment)
-+ [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--Running-ancseq-for-amino-acid-sequence-alignment)
-+ [Example 3 : Running ancseq for codon sequence alignment](#example-3--Running-ancseq-for-codon-sequence-alignment)
-+ [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
++ [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
++ [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
++ [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
++ [Example 4 : Running ancseq with ```--fast``` option](#example-4--running-ancseq-with---fast-option)
 
 
 ### Example 1 : Running ancseq for nucleotide sequence alignment
