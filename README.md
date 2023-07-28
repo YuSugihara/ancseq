@@ -43,6 +43,7 @@ git clone https://github.com/YuSugihara/ancseq.git
 cd ancseq
 conda env create -f ancseq.yml
 conda activate ancseq
+pip install .
 ```
 
 ## Usage
