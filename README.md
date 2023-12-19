@@ -246,7 +246,7 @@ iqtree -s ${INPUT_FASTA} \
 
 ```bash
 iqtree -asr \
-       -s ${INPUT_FASTA}.binary \
+       -s ${INPUT_FASTA} \
        -te /OUT_DIR/00_tree/${INPUT_FASTA}.treefile \
        -st ${SEQ_TYPE} \
        -T ${NUM_THREADS} \
@@ -272,7 +272,7 @@ iqtree -asr \
 
 ```bash
 iqtree -asr \
-       -s ${INPUT_FASTA} \
+       -s ${INPUT_FASTA}.binary \
        -te /OUT_DIR/00_tree/${INPUT_FASTA}.treefile \
        -st BIN \
        -T ${NUM_THREADS} \
