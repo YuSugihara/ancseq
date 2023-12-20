@@ -91,9 +91,16 @@ class Params(object):
         
         parser.add_argument('--model',
                             action='store',
+                            default='MFP',
+                            type=str,
+                            help='Specify substitution model for IQ-TREE. IQ-TREE searches the best substitution\nmodel using ModelFinder in default [MFP]',
+                            metavar='')
+
+        parser.add_argument('--outgroup',
+                            action='store',
                             default=None,
                             type=str,
-                            help='Specify substitution model for IQ-TREE. [None]',
+                            help='Specify outgroup for IQ-TREE. [None]',
                             metavar='')
         
         parser.add_argument('--stop-pseudo-codon',

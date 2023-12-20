@@ -29,42 +29,19 @@ class ancseq(object):
         seq = os.path.join(out_dir_00, os.path.basename(self.args.seq))
         os.mkdir(out_dir_00)
         shutil.copyfile(self.args.seq, seq)
+        cmd = f'iqtree -s {seq} \
+                       -st {self.args.mode} \
+                       -T {self.args.threads} \
+                       -m {self.args.model}'
         if self.args.fast:
-            if self.args.model == None:
-                cmd = f'iqtree -s {seq} \
-                               -st {self.args.mode} \
-                               -T {self.args.threads} \
-                               --alrt {self.args.bootstrap} \
-                               -m MFP \
-                               --fast \
-                               1> {out_dir_00}/00_iqtree.out \
-                               2> {out_dir_00}/00_iqtree.err'
-            else:
-                cmd = f'iqtree -s {seq} \
-                               -st {self.args.mode} \
-                               -T {self.args.threads} \
-                               --alrt {self.args.bootstrap} \
-                               -m {self.args.model} \
-                               --fast \
-                               1> {out_dir_00}/00_iqtree.out \
-                               2> {out_dir_00}/00_iqtree.err'
+            cmd += f' --fast \
+                      --alrt {self.args.bootstrap}'
         else:
-            if self.args.model == None:
-                cmd = f'iqtree -s {seq} \
-                               -st {self.args.mode} \
-                               -T {self.args.threads} \
-                               -B {self.args.bootstrap} \
-                               -m MFP \
-                               1> {out_dir_00}/00_iqtree.out \
-                               2> {out_dir_00}/00_iqtree.err'
-            else:
-                cmd = f'iqtree -s {seq} \
-                               -st {self.args.mode} \
-                               -T {self.args.threads} \
-                               -B {self.args.bootstrap} \
-                               -m {self.args.model} \
-                               1> {out_dir_00}/00_iqtree.out \
-                               2> {out_dir_00}/00_iqtree.err'
+            cmd += f' -B {self.args.bootstrap}'
+        if self.args.outgroup != None:
+            cmd += f' -o {self.args.outgroup}'
+        cmd += f' 1> {out_dir_00}/00_iqtree.out \
+                  2> {out_dir_00}/00_iqtree.err'
         cmd = clean_cmd(cmd)
         try:
             sbp.run(cmd,
@@ -103,9 +80,11 @@ class ancseq(object):
                        -te {tree} \
                        -st {self.args.mode} \
                        -T {self.args.threads} \
-                       -m {self.args.model} \
-                       1> {out_dir_10}/10_iqtree.out \
-                       2> {out_dir_10}/10_iqtree.err'
+                       -m {self.args.model}'
+        if self.args.outgroup != None:
+            cmd += f' -o {self.args.outgroup}'
+        cmd += f' 1> {out_dir_10}/10_iqtree.out \
+                  2> {out_dir_10}/10_iqtree.err'
         cmd = clean_cmd(cmd)
         try:
             sbp.run(cmd,
@@ -148,9 +127,11 @@ class ancseq(object):
                        -st BIN \
                        -T {self.args.threads} \
                        -blfix \
-                       -m JC2 \
-                       1> {out_dir_20}/20_iqtree.out \
-                       2> {out_dir_20}/20_iqtree.err'
+                       -m JC2'
+        if self.args.outgroup != None:
+            cmd += f' -o {self.args.outgroup}'
+        cmd += f' 1> {out_dir_20}/20_iqtree.out \
+                  2> {out_dir_20}/20_iqtree.err'
         cmd = clean_cmd(cmd)
         try:
             sbp.run(cmd,
