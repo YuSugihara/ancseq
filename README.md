@@ -52,7 +52,7 @@ pip install .
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.0.0
+ancseq version 1.1.0
 
 options:
   -h, --help           show this help message and exit
@@ -65,16 +65,21 @@ options:
   --min-prob           Minimum probability of being reported as an ambiguous site. [0.05]
   --min-gap-prob       Minimum probability of replacing the ancestral state with a gap. [0.5]
   --fast               Use -fast option in IQ-TREE [FLASE]
-  --model              Specify substitution model for IQ-TREE. [None]
+  --model              Specify substitution model for IQ-TREE. IQ-TREE searches the best substitution
+                       model using ModelFinder in default [MFP]
+  --outgroup           Specify outgroup for IQ-TREE. [None]
   --stop-pseudo-codon  Stop calculation of pvalues of pseudo-codon [FLASE]
   --asr-only           Skip building tree and reconstruct ancestral states only [FLASE]
   -v, --version        show program's version number and exit
 ```
 
+**We recoomend to specify the outgroup to avoid misinterpretation of the ancestral states of nodes. See more detail [here](#Example-4--Running-ancseq-specifing-outgroup).**
+
 + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
 + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
 + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
-+ [Example 4 : Running ancseq with ```--fast``` option](#example-4--running-ancseq-with---fast-option)
++ [Example 4 : Running ancseq specifing outgroup](#example-4--running-ancseq-specifing-outgroup)
++ [Example 5 : Running ancseq with ```--fast``` option](#example-5--running-ancseq-with---fast-option)
 
 
 ### Example 1 : Running ancseq for nucleotide sequence alignment
@@ -120,7 +125,26 @@ ancseq -s test_codon.fasta \
 
 `-o` : Name of the output directory. The given name should not exist.
 
-### Example 4 : Running ancseq with ```--fast``` option
+### Example 4 : Running ancseq specifing outgroup
+
+You can reconstruct the ancestral states without specifying the outgroup. However, the ancestral state of nodes may be misinterpreted when you visualize the tree. Therefore, we recommend to specify the outgroup to avoid misinterpretation of the ancestral state of nodes. IQ-TREE convert the rooted tree to the unrooted tree in defalt.
+
+```
+ancseq -s test_nuc.fasta \
+       -m DNA \
+       --outgroup seq_id \
+       -o out_dir
+```
+
+`-s` : Nucleotide sequence alignment in fasta format.
+
+`-m` : Sequence type.
+
+`--outgroup` : Sequence ID of outgroup.
+
+`-o` : Name of the output directory. The given name should not exist.
+
+### Example 5 : Running ancseq with ```--fast``` option
 
 ```bash
 ancseq -s test_nuc.fasta \
