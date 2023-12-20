@@ -1,5 +1,5 @@
 # ancseq
-#### Version 1.0.0
+#### Version 1.1.0
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
