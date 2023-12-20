@@ -275,6 +275,8 @@ iqtree -asr \
        -st ${SEQ_TYPE} \
        -T ${NUM_THREADS} \
        -m ${MODEL} \
+       -o ${OUTGROUP} \
+       -keep_empty_seq \
        1> /OUT_DIR/10_asr/10_iqtree.out \
        2> /OUT_DIR/10_asr/10_iqtree.err
 ```
@@ -291,6 +293,10 @@ iqtree -asr \
 
 `-m` : Model name.
 
+`-o` : Sequence ID of the outgroup if you specify the outgroup with `--outgroup`.
+
+`-keep_empty_seq` : Keep empty sequences in the alignment.
+
 
 ### IQ-TREE command 3
 
@@ -302,6 +308,8 @@ iqtree -asr \
        -T ${NUM_THREADS} \
        -blfix \
        -m JC2 \
+       -o ${OUTGROUP} \
+       -keep_empty_seq \
        1> /OUT_DIR/20_indels/20_iqtree.out \
        2> /OUT_DIR/20_indels/20_iqtree.err
 ```
@@ -319,6 +327,10 @@ iqtree -asr \
 `-blfix` : Fix branch lengths of tree passed via `-t` or `-te`.
 
 `-m JC2` : Jukes-Cantor type model for binary data.
+
+`-o` : Sequence ID of the outgroup if you specify the outgroup with `--outgroup`.
+
+`-keep_empty_seq` : Keep empty sequences in the alignment.
 
 #### References
 

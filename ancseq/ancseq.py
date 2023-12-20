@@ -80,7 +80,8 @@ class ancseq(object):
                        -te {tree} \
                        -st {self.args.mode} \
                        -T {self.args.threads} \
-                       -m {self.args.model}'
+                       -m {self.args.model} \
+                       -keep_empty_seq'
         if self.args.outgroup != None:
             cmd += f' -o {self.args.outgroup}'
         cmd += f' 1> {out_dir_10}/10_iqtree.out \
@@ -104,12 +105,41 @@ class ancseq(object):
         self.binary_file_name = os.path.join(self.args.out, '20_indels', f'{os.path.basename(self.args.seq)}.binary')
         binary_file = open(self.binary_file_name, 'w')
         for header, seq in SimpleFastaParser(fasta_file):
+            bin_seq = ''
+            dna_missing_chars = ['N', 'X', '?', '.', 'O', '~', '!']
+            aa_missing_chars = ['X', '?', '.', '~', '!']
             if self.args.mode == 'CODON':
-                seq = ''.join(['1' if seq[i:i+3] == '---' else '0' for i in range(0, len(seq), 3)])
+                for i in range(0, len(seq), 3):
+                    if seq[i:i+3] == '---':
+                        bin_seq += '1'
+                    elif seq[i] in dna_missing_chars or seq[i+1] in dna_missing_chars or seq[i+2] in dna_missing_chars:
+                        bin_seq += '-'
+                    else:
+                        bin_seq += '0'
+            elif self.args.mode == 'DNA':
+                for i in range(len(seq)):
+                    if seq[i] == '-':
+                        bin_seq += '1'
+                    elif seq[i] in dna_missing_chars:
+                        bin_seq += '-'
+                    else:
+                        bin_seq += '0'
+            elif self.args.mode == 'AA':
+                for i in range(len(seq)):
+                    if seq[i] == '-':
+                        bin_seq += '1'
+                    elif seq[i] in aa_missing_chars:
+                        bin_seq += '-'
+                    else:
+                        bin_seq += '0'
             else:
-                seq = ''.join(['1' if s == '-' else '0' for s in seq])
+                print(time_stamp(),
+                      f'Invalid mode {self.args.mode} was given.',
+                      file=sys.stderr,
+                      flush=True)
+                sys.exit(1)
             binary_file.write(f'>{header}\n')
-            binary_file.write(f'{seq}\n')
+            binary_file.write(f'{bin_seq}\n')
         fasta_file.close()
         binary_file.close()
         
@@ -127,6 +157,7 @@ class ancseq(object):
                        -st BIN \
                        -T {self.args.threads} \
                        -blfix \
+                       -keep_empty_seq \
                        -m JC2'
         if self.args.outgroup != None:
             cmd += f' -o {self.args.outgroup}'
