@@ -127,7 +127,7 @@ ancseq -s test_codon.fasta \
 
 ### Example 4 : Running ancseq specifing outgroup
 
-You can reconstruct the ancestral states without specifying the outgroup. However, the ancestral states of the node may be misinterpreted when you visualize the tree. Therefore, we recommend to specify the outgroup to avoid misinterpretation of ancestral states of the node. IQ-TREE convert the rooted tree to the unrooted tree in defalt.
+You can reconstruct the ancestral states without specifying the outgroup. However, the ancestral states of the node may be misinterpreted when you visualize the tree. Therefore, we recommend to specify the outgroup to avoid misinterpretation of ancestral states of the node. IQ-TREE converts the rooted tree to the unrooted tree in defalt.
 
 ```
 ancseq -s test_nuc.fasta \
