@@ -396,10 +396,8 @@ class ancseq(object):
                 shutil.copyfile(f'{self.args.seq}.log', f'{seq}.log')
         else:
             self.built_tree()
-        if self.args.model == 'MFP':
-            seq = os.path.join(out_dir_00, os.path.basename(self.args.seq))
-            if os.path.isfile(f'{seq}.log'):
-                self.check_best_model()
+        if self.args.model == 'MFP' and os.path.isfile(f'{self.args.out}/00_tree/{self.args.seq}.log'):
+            self.check_best_model()
         self.reconstruct_ancestral_state()
         self.reconstruct_indels()
         self.merge_results()
