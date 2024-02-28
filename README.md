@@ -326,7 +326,7 @@ iqtree -asr \
 
 `-blfix` : Fix branch lengths of tree passed via `-t` or `-te`.
 
-`-m JC2` : Jukes-Cantor type model for binary data.
+`-m JC2` : Jukes-Cantor type binary model.
 
 `-o` : Sequence ID of the outgroup if you specify the outgroup with `--outgroup`.
 
