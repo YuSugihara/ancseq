@@ -10,7 +10,8 @@
   + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
   + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
   + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
-  + [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
+  + [Example 4 : Running ancseq specifing outgroup](#example-4--running-ancseq-specifing-outgroup)
+  + [Example 5 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
 - [Outputs](#outputs)
 - [Workflow in ancseq](#workflow-in-ancseq)
   + [IQ-TREE command 1 : Building a phylogenetic tree](#iq-tree-command-1)
@@ -73,7 +74,7 @@ options:
   -v, --version      show program's version number and exit
 ```
 
-**We recoomend to specify the outgroup to avoid misinterpretation of the ancestral states of nodes. See more detail [here](#Example-4--Running-ancseq-specifing-outgroup).**
+**We recommend to specify the outgroup to avoid misinterpretation of the ancestral states of nodes. See more detail [here](#Example-4--Running-ancseq-specifing-outgroup).**
 
 + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
 + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
