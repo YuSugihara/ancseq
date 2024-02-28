@@ -12,7 +12,7 @@
   + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
   + [Example 4 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
 - [Outputs](#outputs)
-- [Workflow of ancseq](#workflow-of-ancseq)
+- [Workflow in ancseq](#workflow-in-ancseq)
   + [IQ-TREE command 1 : Building a phylogenetic tree](#iq-tree-command-1)
   + [IQ-TREE command 2 : Reconstructing ancestral sequences](#iq-tree-command-2)
   + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#iq-tree-command-3)
@@ -22,7 +22,7 @@
 ## What is ancseq?
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
-Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to reconstruct ancestral sequences using [IQ-TREE](http://www.iqtree.org). See more detail workflow of ancseq [here](#Workflow-of-ancseq).
+Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to reconstruct ancestral sequences using [IQ-TREE](http://www.iqtree.org). See more detail workflow in ancseq [here](#Workflow-in-ancseq).
 
 #### Citation
 - Under preparation...
@@ -211,7 +211,7 @@ Inside of `OUT_DIR` is like below.
   + `ancestral_state_result_with_gap.fasta`: FASTA file of the ancestral sequences with gaps.
   + `ancestral_state_result.sort.tsv` : Probabilities of the ancestral states. 
 
-## Workflow of ancseq
+## Workflow in ancseq
 
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
