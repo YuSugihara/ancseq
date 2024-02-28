@@ -232,18 +232,18 @@ class ancseq(object):
         fasta_with_gap.close()
         fasta.close()
 
-    def calculate_pseudo_codon(self):
+    def calculate_codon_prob(self):
         print(time_stamp(),
-              'Calcurating the probability of pseudo-codon...',
+              'Calcurating the probability of codon...',
               flush=True)
         out_dir_30 = os.path.join(self.args.out, '30_result')
         merged = open(f'{out_dir_30}/ancestral_state_result.tsv')
-        pseudo_codon = open(f'{out_dir_30}/ancestral_state_result.pseudo_codon.tsv', 'w')
+        codon_prob = open(f'{out_dir_30}/ancestral_state_result.codon_prob.tsv', 'w')
         for line in merged:
             line = line.rstrip('\n')
             cols = line.split('\t')
             if line.startswith('Node\tSite'):
-                pseudo_codon.write('Node\tSite\tState\t{}\t---\n'.format('\t'.join(['{}{}{}'.format(nuc_1, nuc_2, nuc_3) for nuc_1 in ['A', 'C', 'G', 'T'] for nuc_2 in ['A', 'C', 'G', 'T'] for nuc_3 in ['A', 'C', 'G', 'T']])))
+                codon_prob.write('Node\tSite\tState\t{}\t---\n'.format('\t'.join(['{}{}{}'.format(nuc_1, nuc_2, nuc_3) for nuc_1 in ['A', 'C', 'G', 'T'] for nuc_2 in ['A', 'C', 'G', 'T'] for nuc_3 in ['A', 'C', 'G', 'T']])))
             else:
                 site = int(cols[1])
                 if site%3 == 1:
@@ -259,13 +259,13 @@ class ancseq(object):
                     codon_probs['---'] = (gap_1 + gap_2 + gap_3)/3
                     codon_sorted = sorted(codon_probs.items(),key=lambda x:x[1], reverse=True)
                     if codon_probs['---'] >= self.args.min_gap_prob:
-                        pseudo_codon.write('{}\t{}\t{}\t{}\n'.format(cols[0], int(site/3), '---', '\t'.join([format(round(v, 4), '.5f') for v in codon_probs.values()])))
+                        codon_prob.write('{}\t{}\t{}\t{}\n'.format(cols[0], int(site/3), '---', '\t'.join([format(round(v, 4), '.5f') for v in codon_probs.values()])))
                     else:
-                        pseudo_codon.write('{}\t{}\t{}\t{}\n'.format(cols[0], int(site/3), codon_sorted[0][0], '\t'.join([format(round(v, 4), '.5f') for v in codon_probs.values()])))
+                        codon_prob.write('{}\t{}\t{}\t{}\n'.format(cols[0], int(site/3), codon_sorted[0][0], '\t'.join([format(round(v, 4), '.5f') for v in codon_probs.values()])))
         merged.close()
-        pseudo_codon.close()
+        codon_prob.close()
         print(time_stamp(),
-              'Calcuration of pseudo-codon probabilities finished.',
+              'Calcuration of codon probabilities finished.',
               flush=True)
 
     def sort_ambiguous_codon(self):
@@ -274,7 +274,7 @@ class ancseq(object):
               flush=True)
         if self.args.mode == 'DNA':
             out_dir_30 = os.path.join(self.args.out, '30_result')
-            ancestral_state = open(f'{out_dir_30}/ancestral_state_result.pseudo_codon.tsv')
+            ancestral_state = open(f'{out_dir_30}/ancestral_state_result.codon_prob.tsv')
         elif self.args.mode == 'CODON':
             out_dir_30 = os.path.join(self.args.out, '30_result')
             ancestral_state = open(f'{out_dir_30}/ancestral_state_result.tsv')
@@ -374,11 +374,11 @@ class ancseq(object):
                 with gzip.open(f'{marged_prefix}.tsv.gz', 'wb') as f_out:
                     shutil.copyfileobj(f_in, f_out)
             os.remove(f'{marged_prefix}.tsv')
-        if os.path.isfile(f'{marged_prefix}.pseudo_codon.tsv'):
-            with open(f'{marged_prefix}.pseudo_codon.tsv', 'rb') as f_in:
-                with gzip.open(f'{marged_prefix}.pseudo_codon.tsv.gz', 'wb') as f_out:
+        if os.path.isfile(f'{marged_prefix}.codon_prob.tsv'):
+            with open(f'{marged_prefix}.codon_prob.tsv', 'rb') as f_in:
+                with gzip.open(f'{marged_prefix}.codon_prob.tsv.gz', 'wb') as f_out:
                     shutil.copyfileobj(f_in, f_out)
-            os.remove(f'{marged_prefix}.pseudo_codon.tsv')
+            os.remove(f'{marged_prefix}.codon_prob.tsv')
 
     def run(self):
         print(time_stamp(), 'Start to run ancseq.', flush=True)
@@ -401,8 +401,8 @@ class ancseq(object):
         self.reconstruct_ancestral_state()
         self.reconstruct_indels()
         self.merge_results()
-        if self.args.mode == 'DNA' and not self.args.stop_pseudo_codon:
-            self.calculate_pseudo_codon()
+        if self.args.mode == 'DNA' and not self.args.stop_codon_prob:
+            self.calculate_codon_prob()
             self.sort_ambiguous_codon()
         elif self.args.mode == 'CODON':
             self.sort_ambiguous_codon()

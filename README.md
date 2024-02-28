@@ -16,7 +16,7 @@
   + [IQ-TREE command 1 : Building a phylogenetic tree](#iq-tree-command-1)
   + [IQ-TREE command 2 : Reconstructing ancestral sequences](#iq-tree-command-2)
   + [IQ-TREE command 3 : Reconstructing inserstions and deletions (INDELs)](#iq-tree-command-3)
-- [What is a pseudo-codon probability in ancseq?](#what-is-a-pseudo-codon-probability)
+- [How does anceseq calculate codon probabilities in DNA mode?](#How-does-anceseq-calculate-codon-probabilities-in-DNA-mode)
 
 
 ## What is ancseq?
@@ -52,25 +52,25 @@ pip install .
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.1.0
+ancseq version 1.2.0
 
 options:
-  -h, --help           show this help message and exit
-  -s , --seq           Sequence alignment in FASTA format.
-  -m , --mode          Sequence type. [NT/AA/CODON]
-  -o , --out           Output directory. The given name must not exist.
-  -t , --threads       Number of threads. [8]
-  -b , --bootstrap     Replicate for bootstrap. [1000]
-  --max-report         Maximum number of ambiguous sites to report at the same position. [5]
-  --min-prob           Minimum probability of being reported as an ambiguous site. [0.05]
-  --min-gap-prob       Minimum probability of replacing the ancestral state with a gap. [0.5]
-  --fast               Use -fast option in IQ-TREE [FLASE]
-  --model              Specify substitution model for IQ-TREE. IQ-TREE searches the best substitution
-                       model using ModelFinder in default [MFP]
-  --outgroup           Specify outgroup for IQ-TREE. [None]
-  --stop-pseudo-codon  Stop calculation of pvalues of pseudo-codon [FLASE]
-  --asr-only           Skip building tree and reconstruct ancestral states only [FLASE]
-  -v, --version        show program's version number and exit
+  -h, --help         show this help message and exit
+  -s , --seq         Sequence alignment in FASTA format.
+  -m , --mode        Sequence type. [NT/AA/CODON]
+  -o , --out         Output directory. The given name must not exist.
+  -t , --threads     Number of threads. [8]
+  -b , --bootstrap   Replicate for bootstrap. [1000]
+  --max-report       Maximum number of ambiguous sites to report at the same position. [5]
+  --min-prob         Minimum probability of being reported as an ambiguous site. [0.05]
+  --min-gap-prob     Minimum probability of replacing the ancestral state with a gap. [0.5]
+  --fast             Use -fast option in IQ-TREE [FLASE]
+  --model            Specify substitution model for IQ-TREE. IQ-TREE searches the best substitution
+                     model using ModelFinder in default [MFP]
+  --outgroup         Specify outgroup for IQ-TREE. [None]
+  --stop-codon-prob  Stop calculation of codon probabilities in DNA mode [FLASE]
+  --asr-only         Skip building tree and reconstruct ancestral states only [FLASE]
+  -v, --version      show program's version number and exit
 ```
 
 **We recoomend to specify the outgroup to avoid misinterpretation of the ancestral states of nodes. See more detail [here](#Example-4--Running-ancseq-specifing-outgroup).**
@@ -202,7 +202,7 @@ Inside of `OUT_DIR` is like below.
    ├── ancestral_state_result_with_gap.fasta
    ├── ancestral_state_result.sort.tsv
    ├── ancestral_state_result.tsv.gz
-   └── ancestral_state_result.pseudo_codon.tsv.gz
+   └── ancestral_state_result.codon_prob.tsv.gz
 ```
 - The phylogenetic tree reconstructed by IQ-TREE can be found in `00_tree`.
 - The results of the ancestral sequence reconstruction can be found in `30_result`.
@@ -338,4 +338,4 @@ iqtree -asr \
 
 2. VanAntwerp J, Finneran P, Dolgikh B, Woldring D. 2022. Ancestral Sequence Reconstruction and Alternate Amino Acid States Guide Protein Library Design for Directed Evolution. In: Traxlmayr MW ed. Yeast Surface Display. Methods in Molecular Biology. New York, NY: Springer US, 75–86. DOI: [10.1007/978-1-0716-2285-8_4](https://doi.org/10.1007/978-1-0716-2285-8_4).
 
-## What is a pseudo-codon probability in ancseq?
+## How does anceseq calculate codon probabilities in DNA mode?

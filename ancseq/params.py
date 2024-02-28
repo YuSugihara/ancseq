@@ -103,9 +103,9 @@ class Params(object):
                             help='Specify outgroup for IQ-TREE. [None]',
                             metavar='')
         
-        parser.add_argument('--stop-pseudo-codon',
+        parser.add_argument('--stop-codon-prob',
                             action='store_true',
-                            help='Stop calculation of pvalues of pseudo-codon [FLASE]')
+                            help='Stop calculation of codon probabilities in DNA mode [FLASE]')
         
         parser.add_argument('--asr-only',
                             action='store_true',
