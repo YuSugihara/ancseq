@@ -112,7 +112,7 @@ ancseq -s test_nuc.fasta \
 
 ### Example 3 : Running ancseq for codon sequence alignment
 
-**!!!WARNING!!!** The codon mode can take too long time to build a phylogenetic tree. Therefore, we would recommend to run ancseq in DNA mode even if your alignmment is codon-based.
+**!!!WARNING!!!** IQ-TREE implements codon substitution models. However, it might take too long to build phylogenetic tree, depending on the alignment you input. In that case, we would recommend running ancseq in DNA mode. anceseq can calculate the probabilities of each codon in DNA mode.
 
 ```bash
 ancseq -s test_codon.fasta \
@@ -341,6 +341,6 @@ iqtree -asr \
 
 ## How does anceseq calculate codon probabilities in DNA mode?
 
-Depending on the alignment that you input, the codon mode can take too long time to build a phylogenetic tree. Therefore, we implemented a function to calculate the probabilities of each codon by simply multiplying the probabilities of each nucleotide.
+IQ-TREE implements codon substitution models. However, it might take too long to build phylogenetic tree, depending on the alignment you input. Therefore, we implemented a function to calculate the probabilities of each codon by simply multiplying the probabilities of each nucleotide. For example, a probability of methionine at the $j$ th position, $P_{j, M}$, can be calculated by multiplying a probability of A at the 1st nucleotide of the $j$ th codon, $p_{j_{1}, A}$, that of T at the 2nd nucleotide, $p_{j_{2}, T}$, and that of G at the 3rd nucleotide, $p_{j_{3}, G}$.
 
-$p_Met$
+$P_{j, M} = p_{j_{1}, A} * p_{j_{2}, T} * p_{j_{3}, G}$
