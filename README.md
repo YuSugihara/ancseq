@@ -112,7 +112,7 @@ ancseq -s test_nuc.fasta \
 
 ### Example 3 : Running ancseq for codon sequence alignment
 
-**!!!WARNING!!!** The codon mode can take a very long time to build a phylogenetic tree. Therefore, we would recommend to run ancseq in DNA mode even if your alignmment is codon-based.
+**!!!WARNING!!!** The codon mode can take too long time to build a phylogenetic tree. Therefore, we would recommend to run ancseq in DNA mode even if your alignmment is codon-based.
 
 ```bash
 ancseq -s test_codon.fasta \
@@ -340,3 +340,7 @@ iqtree -asr \
 2. VanAntwerp J, Finneran P, Dolgikh B, Woldring D. 2022. Ancestral Sequence Reconstruction and Alternate Amino Acid States Guide Protein Library Design for Directed Evolution. In: Traxlmayr MW ed. Yeast Surface Display. Methods in Molecular Biology. New York, NY: Springer US, 75–86. DOI: [10.1007/978-1-0716-2285-8_4](https://doi.org/10.1007/978-1-0716-2285-8_4).
 
 ## How does anceseq calculate codon probabilities in DNA mode?
+
+Depending on the alignment that you input, the codon mode can take too long time to build a phylogenetic tree. Therefore, we implemented a function to calculate the probabilities of each codon by simply multiplying the probabilities of each nucleotide.
+
+$p_Met$
