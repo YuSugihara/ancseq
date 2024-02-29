@@ -21,7 +21,7 @@
 
 
 ## What is ancseq?
-<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.tiff" width=400>
+<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
 Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to reconstruct ancestral sequences using [IQ-TREE](http://www.iqtree.org). See more detail workflow in ancseq [here](#Workflow-in-ancseq).
 
@@ -214,7 +214,7 @@ Inside of `OUT_DIR` is like below.
 
 ## Workflow in ancseq
 
-<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.tif" width=400>
+<img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
 - [IQ-TREE command 1](#iq-tree-command-1) : Building a phylogenetic tree.
 - [IQ-TREE command 2](#iq-tree-command-2) : Reconstructing ancestral sequences.
