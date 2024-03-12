@@ -36,7 +36,7 @@ class Params(object):
                             '--mode',
                             required=True,
                             type=str,
-                            help='Sequence type. [NT/AA/CODON]',
+                            help='Sequence type. [DNA/AA/CODON]',
                             choices=['DNA','AA', 'CODON'],
                             metavar='')
 

@@ -1,5 +1,5 @@
 # ancseq
-#### Version 1.2.0
+#### Version 1.2.1
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
@@ -53,12 +53,12 @@ pip install .
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.2.0
+ancseq version 1.2.1
 
 options:
   -h, --help         show this help message and exit
   -s , --seq         Sequence alignment in FASTA format.
-  -m , --mode        Sequence type. [NT/AA/CODON]
+  -m , --mode        Sequence type. [DNA/AA/CODON]
   -o , --out         Output directory. The given name must not exist.
   -t , --threads     Number of threads. [8]
   -b , --bootstrap   Replicate for bootstrap. [1000]
