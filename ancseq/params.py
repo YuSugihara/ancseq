@@ -51,9 +51,9 @@ class Params(object):
         parser.add_argument('-t',
                             '--threads',
                             action='store',
-                            default=8,
+                            default=4,
                             type=int,
-                            help='Number of threads. [8]',
+                            help='Number of threads. [4]',
                             metavar='')
         
         parser.add_argument('-b',

@@ -60,7 +60,7 @@ options:
   -s , --seq         Sequence alignment in FASTA format.
   -m , --mode        Sequence type. [DNA/AA/CODON]
   -o , --out         Output directory. The given name must not exist.
-  -t , --threads     Number of threads. [8]
+  -t , --threads     Number of threads. [4]
   -b , --bootstrap   Replicate for bootstrap. [1000]
   --max-report       Maximum number of ambiguous sites to report at the same position. [5]
   --min-prob         Minimum probability of being reported as an ambiguous site. [0.05]

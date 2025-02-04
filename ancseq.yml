@@ -5,5 +5,5 @@ channels:
   - anaconda
   - defaults
 dependencies:
-  - iqtree=2.2.6
-  - biopython=1.80
+  - iqtree=2.3.6
+  - biopython=1.85
