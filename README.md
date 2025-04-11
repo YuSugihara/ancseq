@@ -26,7 +26,7 @@
 Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to reconstruct ancestral sequences using [IQ-TREE](http://www.iqtree.org). See more detail workflow in ancseq [here](#Workflow-in-ancseq).
 
 #### Citation
-Sugihara Y, Kourelis J, Contreras MP, Pai H, Selvaraj M, Toghani A, Martinez-Anaya C*, Kamoun S* (2024) [Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector](https://doi.org/10.1101/2024.06.16.598756). bioRxiv. *Corresponding authors
+Sugihara Y, Kourelis J, Contreras MP, Pai H, Harant A. Selvaraj M, Toghani A, Martinez-Anaya C*, Kamoun S* (2025) [Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector](https://doi.org/10.1371/journal.pgen.1011653). __PLOS Genetics__, 21:e1011653 *Corresponding authors
 
 
 ## Installation
