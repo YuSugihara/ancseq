@@ -46,6 +46,11 @@ conda env create -f ancseq.yml
 conda activate ancseq
 pip install .
 ```
+Note: IQ-TREE is installed via ancseq.yml, so no separate installation is needed. After activating the environment you can verify with:
+```
+iqtree -h
+```
+If you install ancseq outside this conda environment, install IQ-TREE separately and ensure its executable is on PATH.
 
 ## Usage
 
