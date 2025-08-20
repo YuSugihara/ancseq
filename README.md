@@ -10,14 +10,14 @@
   + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
   + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
   + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
-  + [Example 4 : Running ancseq specifing outgroup](#example-4--running-ancseq-specifing-outgroup)
-  + [Example 5 : Running ancseq with ```--fast``` option](#example-4--Running-ancseq-with---fast-option)
+  + [Example 4 : Running ancseq specifying outgroup](#example-4--running-ancseq-specifying-outgroup)
+  + [Example 5 : Running ancseq with ```--fast``` option](#example-5--running-ancseq-with---fast-option)
 - [Outputs](#outputs)
 - [Workflow in ancseq](#workflow-in-ancseq)
   + [IQ-TREE command 1 : Building a phylogenetic tree](#iq-tree-command-1)
   + [IQ-TREE command 2 : Reconstructing ancestral sequences](#iq-tree-command-2)
-  + [IQ-TREE command 3 : Reconstructing ancestral inserstions and deletions (INDELs)](#iq-tree-command-3)
-- [How does anceseq calculate codon probabilities in DNA mode?](#How-does-anceseq-calculate-codon-probabilities-in-DNA-mode)
+  + [IQ-TREE command 3 : Reconstructing ancestral insertions and deletions (INDELs)](#iq-tree-command-3)
+- [How does ancseq calculate codon probabilities in DNA mode?](#how-does-ancseq-calculate-codon-probabilities-in-dna-mode)
 
 
 ## What is ancseq?
@@ -31,10 +31,10 @@ Sugihara Y, Kourelis J, Contreras MP, Pai H, Harant A. Selvaraj M, Toghani A, Ma
 
 ## Installation
 ### Dependencies
-#### Softwares
-- [IQ-TREE](http://www.iqtree.org)
+#### Software
+- [IQ-TREE](http://www.iqtree.org) (must be on PATH)
 
-#### Python (>=3.5) libraries
+#### Python (>=3.8) libraries
 - [biopython](https://biopython.org)
 
 ### Installation using conda
@@ -57,30 +57,30 @@ ancseq version 1.2.2
 
 options:
   -h, --help         show this help message and exit
-  -s , --seq         Sequence alignment in FASTA format.
-  -m , --mode        Sequence type. [DNA/AA/CODON]
-  -o , --out         Output directory. The given name must not exist.
-  -t , --threads     Number of threads. [4]
-  -b , --bootstrap   Replicate for bootstrap. [1000]
+  -s, --seq          Sequence alignment in FASTA format.
+  -m, --mode         Sequence type. [DNA/AA/CODON]
+  -o, --out          Output directory. The given name must not exist.
+  -t, --threads      Number of threads. [4]
+  -b, --bootstrap    Replicate for bootstrap. [1000]
   --max-report       Maximum number of ambiguous sites to report at the same position. [5]
   --min-prob         Minimum probability of being reported as an ambiguous site. [0.05]
   --min-gap-prob     Minimum probability of replacing the ancestral state with a gap. [0.5]
-  --fast             Use -fast option in IQ-TREE [FLASE]
+  --fast             Use -fast option in IQ-TREE [FALSE]
   --model            Specify substitution model for IQ-TREE. IQ-TREE searches the best substitution
-                     model using ModelFinder in default [MFP]
+                     model using ModelFinder by default [MFP]
   --outgroup         Specify outgroup for IQ-TREE. [None]
-  --stop-codon-prob  Stop calculation of codon probabilities in DNA mode [FLASE]
-  --asr-only         Skip building tree and reconstruct ancestral states only [FLASE]
+  --stop-codon-prob  Stop calculation of codon probabilities in DNA mode [FALSE]
+  --asr-only         Skip building tree and reconstruct ancestral states only [FALSE]
   -v, --version      show program's version number and exit
 ```
 
-**We recommend to specify the outgroup to avoid misinterpretation of the ancestral states of nodes. See more detail [here](#Example-4--Running-ancseq-specifing-outgroup).**
+**We recommend specifying an outgroup to avoid misinterpretation of ancestral states. See [Example 4](#example-4--running-ancseq-specifying-outgroup).**
 
 + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
 + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
 + [Example 3 : Running ancseq for codon sequence alignment](#example-3--running-ancseq-for-codon-sequence-alignment)
-+ [Example 4 : Running ancseq specifing outgroup](#example-4--running-ancseq-specifing-outgroup)
-+ [Example 5 : Running ancseq with ```--fast``` option](#example-5--running-ancseq-with---fast-option)
++ [Example 4 : Running ancseq specifying outgroup](#example-4--running-ancseq-specifying-outgroup)
++ [Example 5 : Running ancseq with --fast option](#example-5--running-ancseq-with---fast-option)
 
 
 ### Example 1 : Running ancseq for nucleotide sequence alignment
@@ -112,7 +112,7 @@ ancseq -s test_nuc.fasta \
 
 ### Example 3 : Running ancseq for codon sequence alignment
 
-**!!!WARNING!!!** IQ-TREE implements codon substitution models. However, it might take too long to build phylogenetic tree, depending on the alignment you input. In that case, we would recommend running ancseq in DNA mode. anceseq can calculate the probabilities of each codon in DNA mode.
+**!!!WARNING!!!** IQ-TREE implements codon substitution models. However, it might take too long to build a phylogenetic tree depending on the alignment you input. In that case, we recommend running ancseq in DNA mode. ancseq can calculate the probabilities of each codon in DNA mode.
 
 ```bash
 ancseq -s test_codon.fasta \
@@ -126,9 +126,9 @@ ancseq -s test_codon.fasta \
 
 `-o` : Name of the output directory. The given name should not exist.
 
-### Example 4 : Running ancseq specifing outgroup
+### Example 4 : Running ancseq specifying outgroup
 
-You can reconstruct the ancestral states without specifying the outgroup. However, the ancestral states of the node may be misinterpreted when you visualize the tree. Therefore, we recommend to specify the outgroup to avoid misinterpretation of ancestral states of the node. IQ-TREE converts the rooted tree to the unrooted tree in defalt.
+You can reconstruct the ancestral states without specifying an outgroup. However, the ancestral states of a node may be misinterpreted when you visualize the tree. Therefore, we recommend specifying an outgroup to avoid misinterpretation. IQ-TREE converts the rooted tree to an unrooted tree by default.
 
 ```
 ancseq -s test_nuc.fasta \
@@ -160,8 +160,7 @@ ancseq -s test_nuc.fasta \
 
 `-o` : Name of the output directory. The given name should not exist.
 
-`--fast` : Use ```-fast``` option in IQ-TREE.
-
+`--fast` : Fast search to resemble FastTree (IQ-TREE -fast).
 
 ## Outputs
 Inside of `OUT_DIR` is like below.
@@ -218,7 +217,7 @@ Inside of `OUT_DIR` is like below.
 
 - [IQ-TREE command 1](#iq-tree-command-1) : Building a phylogenetic tree.
 - [IQ-TREE command 2](#iq-tree-command-2) : Reconstructing ancestral sequences.
-- [IQ-TREE command 3](#iq-tree-command-3) : Reconstructing inserstions and deletions (INDELs).
+- [IQ-TREE command 3](#iq-tree-command-3) : Reconstructing insertions and deletions (INDELs).
 
 ### IQ-TREE command 1
 
@@ -294,7 +293,7 @@ iqtree -asr \
 
 `-m` : Model name.
 
-`-o` : Sequence ID of the outgroup if you specify the outgroup with `--outgroup`.
+`-o` : Outgroup sequence ID (only present if `--outgroup` was specified).
 
 `-keep_empty_seq` : Keep empty sequences in the alignment.
 
@@ -333,14 +332,32 @@ iqtree -asr \
 
 `-keep_empty_seq` : Keep empty sequences in the alignment.
 
-#### References
+## How does ancseq calculate codon probabilities in DNA mode?
+
+In DNA mode, ancseq approximates codon probabilities by multiplying the nucleotide posterior probabilities of the three positions (independence assumption). This is useful when the full IQ-TREE codon model would be too slow.
+
+For codon index j (1-based), the three nucleotide alignment columns are:
+```
+j1 = 3*(j-1)+1
+j2 = 3*(j-1)+2
+j3 = 3*(j-1)+3
+```
+
+Let `p_{j1,X}`, `p_{j2,Y}`, `p_{j3,Z}` be the posterior probabilities of nucleotides X, Y, Z at those three positions.  
+For any codon xyz:
+```
+P_j(xyz) = p_{j1,x} * p_{j2,y} * p_{j3,z}
+```
+
+Example (methionine, ATG):
+```
+P_j(ATG) = p_{j1,A} * p_{j2,T} * p_{j3,G}
+```
+
+This ignores positional dependence modeled in full codon substitution analyses but is fast and practical.
+
+## References
 
 1. Aadland K, Pugh C, Kolaczkowski B. 2019. High-Throughput Reconstruction of Ancestral Protein Sequence, Structure, and Molecular Function. In: Sikosek T ed. Computational Methods in Protein Evolution. Methods in Molecular Biology. New York, NY: Springer, 135–170. DOI: [10.1007/978-1-4939-8736-8_8](https://doi.org/10.1007/978-1-4939-8736-8_8).
 
 2. VanAntwerp J, Finneran P, Dolgikh B, Woldring D. 2022. Ancestral Sequence Reconstruction and Alternate Amino Acid States Guide Protein Library Design for Directed Evolution. In: Traxlmayr MW ed. Yeast Surface Display. Methods in Molecular Biology. New York, NY: Springer US, 75–86. DOI: [10.1007/978-1-0716-2285-8_4](https://doi.org/10.1007/978-1-0716-2285-8_4).
-
-## How does anceseq calculate codon probabilities in DNA mode?
-
-IQ-TREE implements codon substitution models. However, it might take too long to build phylogenetic tree, depending on the alignment you input. Therefore, we implemented a function to calculate the probabilities of each codon by simply multiplying the probabilities of each nucleotide. For example, a probability of methionine at the $j$ th position, $P_{j, M}$, can be calculated by multiplying a probability of A at the 1st nucleotide of the $j$ th codon, $p_{j_{1}, A}$, that of T at the 2nd nucleotide, $p_{j_{2}, T}$, and that of G at the 3rd nucleotide, $p_{j_{3}, G}$ like below.
-
-$P_{j, M} = p_{j_{1}, A} * p_{j_{2}, T} * p_{j_{3}, G}$
