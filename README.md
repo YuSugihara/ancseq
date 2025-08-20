@@ -1,5 +1,5 @@
 # ancseq
-#### Version 1.2.1
+#### Version 1.2.2
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
@@ -53,7 +53,7 @@ pip install .
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.2.1
+ancseq version 1.2.2
 
 options:
   -h, --help         show this help message and exit

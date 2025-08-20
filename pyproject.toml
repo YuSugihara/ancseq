@@ -1,0 +1,21 @@
+[project]
+name = "ancseq"
+version = "1.2.2"
+description = "IQ-TREE Wrapper for Ancestral Sequence Reconstruction"
+authors = [
+    { name="Yu Sugihara", email="sugihara.yu.85s@kyoto-u.jp" }
+]
+license = { text = "GPL" }
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+ancseq = "ancseq.ancseq:main"
+
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ancseq"]
