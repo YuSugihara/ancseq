@@ -15,9 +15,11 @@ from Bio.Seq import Seq
 from Bio.SeqIO.FastaIO import SimpleFastaParser
 from ancseq.utils import time_stamp, clean_cmd, call_log
 
+# Define reusable nucleotide tuple (order preserved for deterministic output).
+NUCLEOTIDES = ("A", "C", "G", "T")
+
 
 class ancseq(object):
-
     def __init__(self, args):
         self.args = args
 
@@ -36,7 +38,7 @@ class ancseq(object):
                       --alrt {self.args.bootstrap}"
         else:
             cmd += f" -B {self.args.bootstrap}"
-        if self.args.outgroup != None:
+        if self.args.outgroup is not None:
             cmd += f" -o {self.args.outgroup}"
         cmd += f" 1> {out_dir_00}/00_iqtree.out \
                   2> {out_dir_00}/00_iqtree.err"
@@ -78,7 +80,7 @@ class ancseq(object):
                        -T {self.args.threads} \
                        -m {self.args.model} \
                        -keep_empty_seq"
-        if self.args.outgroup != None:
+        if self.args.outgroup is not None:
             cmd += f" -o {self.args.outgroup}"
         cmd += f" 1> {out_dir_10}/10_iqtree.out \
                   2> {out_dir_10}/10_iqtree.err"
@@ -161,7 +163,7 @@ class ancseq(object):
                        -blfix \
                        -keep_empty_seq \
                        -m JC2"
-        if self.args.outgroup != None:
+        if self.args.outgroup is not None:
             cmd += f" -o {self.args.outgroup}"
         cmd += f" 1> {out_dir_20}/20_iqtree.out \
                   2> {out_dir_20}/20_iqtree.err"
@@ -210,10 +212,9 @@ class ancseq(object):
                     site_20 = cols_20[1]
                     state = cols_10[2]
                     probs = [float(p) for p in cols_10[3:]]
-                    p_0 = float(cols_20[3])
                     p_1 = float(cols_20[4])
                     if (node_10, site_10) == (node_20, site_20):
-                        if previous_node != node_10 and previous_node != None:
+                        if previous_node != node_10 and previous_node is not None:
                             fasta_with_gap.write(f">{previous_node}\n")
                             fasta_with_gap.write(f"{node_seq}\n")
                             fasta.write(f">{previous_node}\n")
@@ -265,7 +266,8 @@ class ancseq(object):
                 else:
                     merged.write(
                         "Node\tSite\tState\t{}\t{}\n".format(
-                            "\t".join([p.replace("p_", "") for p in cols_10[3:]]), gap
+                            "\t".join([p.replace("p_", "") for p in cols_10[3:]]),
+                                gap,
                         )
                     )
                     previous_node = None
@@ -288,10 +290,10 @@ class ancseq(object):
                     "Node\tSite\tState\t{}\t---\n".format(
                         "\t".join(
                             [
-                                "{}{}{}".format(nuc_1, nuc_2, nuc_3)
-                                for nuc_1 in ["A", "C", "G", "T"]
-                                for nuc_2 in ["A", "C", "G", "T"]
-                                for nuc_3 in ["A", "C", "G", "T"]
+                                f"{n1}{n2}{n3}"
+                                for n1 in NUCLEOTIDES
+                                for n2 in NUCLEOTIDES
+                                for n3 in NUCLEOTIDES
                             ]
                         )
                     )
@@ -300,26 +302,29 @@ class ancseq(object):
                 site = int(cols[1])
                 if site % 3 == 1:
                     nuc_dict_1 = {
-                        nuc: float(p) for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
+                        nuc: float(p)
+                            for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
                     }
                     gap_1 = float(cols[7])
                 elif site % 3 == 2:
                     nuc_dict_2 = {
-                        nuc: float(p) for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
+                        nuc: float(p)
+                            for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
                     }
                     gap_2 = float(cols[7])
                 else:
                     nuc_dict_3 = {
-                        nuc: float(p) for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
+                        nuc: float(p)
+                            for nuc, p in zip(["A", "C", "G", "T"], cols[3:7])
                     }
                     gap_3 = float(cols[7])
                     codon_probs = {
-                        "{}{}{}".format(nuc_1, nuc_2, nuc_3): nuc_dict_1[nuc_1]
-                        * nuc_dict_2[nuc_2]
-                        * nuc_dict_3[nuc_3]
-                        for nuc_1 in ["A", "C", "G", "T"]
-                        for nuc_2 in ["A", "C", "G", "T"]
-                        for nuc_3 in ["A", "C", "G", "T"]
+                        f"{n1}{n2}{n3}": nuc_dict_1[n1]
+                        * nuc_dict_2[n2]
+                        * nuc_dict_3[n3]
+                        for n1 in NUCLEOTIDES
+                        for n2 in NUCLEOTIDES
+                        for n3 in NUCLEOTIDES
                     }
                     codon_probs["---"] = (gap_1 + gap_2 + gap_3) / 3
                     codon_sorted = sorted(
@@ -549,4 +554,5 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
     main()
