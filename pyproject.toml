@@ -1,6 +1,6 @@
 [project]
 name = "ancseq"
-version = "1.2.2"
+version = "1.3.0"
 description = "IQ-TREE Wrapper for Ancestral Sequence Reconstruction"
 authors = [
     { name="Yu Sugihara", email="sugihara.yu.85s@kyoto-u.jp" }

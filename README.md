@@ -1,5 +1,5 @@
 # ancseq
-#### Version 1.2.2
+#### Version 1.3.0
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
@@ -58,7 +58,7 @@ If you install ancseq outside this conda environment, install IQ-TREE separately
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.2.2
+ancseq version 1.3.0
 
 options:
   -h, --help         show this help message and exit
