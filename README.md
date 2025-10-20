@@ -79,7 +79,7 @@ options:
   -v, --version      show program's version number and exit
 ```
 
-**We recommend specifying an outgroup to avoid misinterpretation of ancestral states. See [Example 4](#example-4--running-ancseq-specifying-outgroup).**
+**⚠️ We recommend specifying an outgroup to avoid misinterpretation of ancestral states. See [Example 4](#example-4--running-ancseq-specifying-outgroup).**
 
 + [Example 1 : Running ancseq for nucleotide sequence alignment](#example-1--running-ancseq-for-nucleotide-sequence-alignment)
 + [Example 2 : Running ancseq for amino acid sequence alignment](#example-2--running-ancseq-for-amino-acid-sequence-alignment)
@@ -117,7 +117,7 @@ ancseq -s test_nuc.fasta \
 
 ### Example 3 : Running ancseq for codon sequence alignment
 
-**!!!WARNING!!!** IQ-TREE implements codon substitution models. However, it might take too long to build a phylogenetic tree depending on the alignment you input. In that case, we recommend running ancseq in DNA mode. ancseq can calculate the probabilities of each codon in DNA mode.
+⚠️ **WARNING** IQ-TREE implements codon substitution models. However, it might take too long to build a phylogenetic tree depending on the alignment you input. In that case, we recommend running ancseq in DNA mode. ancseq can calculate the probabilities of each codon in DNA mode.
 
 ```bash
 ancseq -s test_codon.fasta \
