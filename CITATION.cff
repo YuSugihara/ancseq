@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: If you use ancseq, please cite the article specified in preferred-citation.
+title: ancseq
+type: software
+authors:
+- family-names: Sugihara
+  given-names: Yu
+  email: sugihara.yu.85s@kyoto-u.jp
+  orcid: https://orcid.org/0000-0001-6042-1091
+version: 1.3.0
+abstract: A local command-line tool for ancestral sequence reconstruction with gap-state inference using IQ-TREE.
+repository-code: https://github.com/YuSugihara/ancseq
+license: GPL-3.0-or-later
+keywords:
+- ancestral sequence reconstruction
+- ancestral protein reconstruction
+- phylogenetics
+- molecular evolution
+- gap-state inference
+- IQ-TREE
+- bioinformatics
+preferred-citation:
+  type: article
+  authors:
+  - family-names: Sugihara
+    given-names: Yu
+    orcid: https://orcid.org/0000-0001-6042-1091
+  - family-names: Kourelis
+    given-names: Jiorgos
+    orcid: https://orcid.org/0000-0002-9007-1333
+  - family-names: Contreras
+    given-names: Mauricio P.
+    orcid: https://orcid.org/0000-0001-6002-0730
+  - family-names: Pai
+    given-names: Hsuan
+    orcid: https://orcid.org/0000-0002-7284-6131
+  - family-names: Harant
+    given-names: Adeline
+    orcid: https://orcid.org/0000-0001-7636-4917
+  - family-names: Selvaraj
+    given-names: Muniyandi
+  - family-names: Toghani
+    given-names: AmirAli
+    orcid: https://orcid.org/0000-0002-0644-699X
+  - family-names: Martínez-Anaya
+    given-names: Claudia
+    orcid: https://orcid.org/0000-0002-2483-6115
+  - family-names: Kamoun
+    given-names: Sophien
+    orcid: https://orcid.org/0000-0002-0290-0315
+  title: Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector
+  journal: PLOS Genetics
+  year: 2025
+  month: 4
+  day: 9
+  volume: 21
+  issue: 4
+  start: e1011653
+  doi: 10.1371/journal.pgen.1011653
