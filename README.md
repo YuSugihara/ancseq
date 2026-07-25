@@ -21,12 +21,23 @@
 
 
 ## What is ancseq?
+
 <img src="https://github.com/YuSugihara/ancseq/blob/main/images/ancseq_workflow.png" width=400>
 
-Ancestral sequence reconstruction is a technique to reconstruct ancestral states from a multiple sequence alignment. ancseq is a wrapper tool to reconstruct ancestral sequences using [IQ-TREE](http://www.iqtree.org). See more detail workflow in ancseq [here](#Workflow-in-ancseq).
+Ancestral sequence reconstruction estimates ancestral states from a multiple sequence alignment. ancseq is a local command-line tool that uses [IQ-TREE](https://doi.org/10.1093/molbev/msaa015) to reconstruct ancestral nucleotide, amino acid, and codon sequences. It also reconstructs ancestral gap states and reports site-wise posterior probabilities.
+
+See the detailed [ancseq workflow](#workflow-in-ancseq) below.
+
+### Key features
+
+* Supports nucleotide, amino acid, and codon sequence alignments.
+* Automatically infers ancestral gap states from gapped input alignments.
+* Supports multithreaded [IQ-TREE](https://doi.org/10.1093/molbev/msaa015) analyses.
+* Uses [ModelFinder](https://doi.org/10.1038/nmeth.4285) by default and accepts user-specified substitution models.
+* Reports site-wise posterior probabilities of ancestral states.
 
 #### Citation
-Sugihara Y, Kourelis J, Contreras MP, Pai H, Harant A. Selvaraj M, Toghani A, Martinez-Anaya C*, Kamoun S* (2025) [Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector](https://doi.org/10.1371/journal.pgen.1011653). _PLOS Genetics_, 21:e1011653 *Corresponding authors
+Sugihara Y, Kourelis J, Contreras MP, Pai H, Harant A, Selvaraj M, Toghani A, Martinez-Anaya C*, Kamoun S* (2025) [Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector](https://doi.org/10.1371/journal.pgen.1011653). _PLOS Genetics_, 21:e1011653 *Corresponding authors
 
 
 ## Installation
@@ -104,7 +115,7 @@ ancseq -s test_nuc.fasta \
 ### Example 2 : Running ancseq for amino acid sequence alignment
 
 ```bash
-ancseq -s test_nuc.fasta \
+ancseq -s test_aa.fasta \
        -m AA \
        -o out_dir
 ```
@@ -214,7 +225,7 @@ Inside of `OUT_DIR` is like below.
   + `ancestral_state_result.treefile`: Phylogenetic tree with the node labels.
   + `ancestral_state_result.fasta`: FASTA file of the ancestral sequences without gaps.
   + `ancestral_state_result_with_gap.fasta`: FASTA file of the ancestral sequences with gaps.
-  + `ancestral_state_result.sort.tsv` : Probabilities of the ancestral states. 
+  + `ancestral_state_result.sort.tsv` : Site-wise posterior probabilities of ancestral states.
 
 ## Workflow in ancseq
 
