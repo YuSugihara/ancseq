@@ -3,6 +3,7 @@
 
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
+- [Try ancseq in Google Colab](#try-ancseq-in-google-colab)
 - [Installation](#installation)
   + [Dependencies](#dependencies)
   + [Installation using conda](#installation-using-conda)
@@ -38,6 +39,13 @@ See the detailed [ancseq workflow](#workflow-in-ancseq) below.
 
 #### Citation
 Sugihara Y, Kourelis J, Contreras MP, Pai H, Harant A, Selvaraj M, Toghani A, Martinez-Anaya C*, Kamoun S* (2025) [Helper NLR immune protein NRC3 evolved to evade inhibition by a cyst nematode virulence effector](https://doi.org/10.1371/journal.pgen.1011653). _PLOS Genetics_, 21:e1011653 *Corresponding authors
+
+
+## Try ancseq in Google Colab
+
+Run ancseq in your browser without installing it locally. Upload one aligned FASTA file, configure the analysis, run ancseq, and download the results.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YuSugihara/ancseq/blob/main/ancseq_colab.ipynb)
 
 
 ## Installation
