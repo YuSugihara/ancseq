@@ -1,6 +1,8 @@
 # ancseq
 #### Version 1.3.0
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YuSugihara/ancseq/blob/main/ancseq_colab.ipynb)
+
 ## Table of contents
 - [What is ancseq?](#what-is-ancseq)
 - [Try ancseq in Google Colab](#try-ancseq-in-google-colab)
