@@ -191,6 +191,7 @@ ancseq -s test_nuc.fasta \
 ## Outputs
 Inside of `OUT_DIR` is like below.
 ```
+├── run_info.txt
 ├── 00_tree
 │  ├── 00_iqtree.err
 │  ├── 00_iqtree.out
@@ -230,6 +231,7 @@ Inside of `OUT_DIR` is like below.
    ├── ancestral_state_result.tsv.gz
    └── ancestral_state_result.codon_prob.tsv.gz
 ```
+- `run_info.txt` in the output directory records the ancseq and IQ-TREE versions, start time (with time zone), and command.
 - The phylogenetic tree reconstructed by IQ-TREE can be found in `00_tree`.
 - The results of the ancestral sequence reconstruction can be found in `30_result`.
   + `ancestral_state_result.treefile`: Phylogenetic tree with the node labels.

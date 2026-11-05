@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from ancseq.params import Params
+from ancseq import __version__
 
 
 pm = Params("ancseq")
@@ -10,7 +11,9 @@ import os
 import sys
 import gzip
 import shutil
+import shlex
 import subprocess as sbp
+from datetime import datetime
 from Bio.Seq import Seq
 from Bio.SeqIO.FastaIO import SimpleFastaParser
 from ancseq.utils import time_stamp, clean_cmd, call_log
@@ -514,7 +517,19 @@ class Ancseq:
                 shutil.copyfileobj(f_in, f_out)
             os.remove(f"{marged_prefix}.codon_prob.tsv")
 
+    def write_run_info(self, started_at):
+        with open(os.path.join(self.out_dir_10, "10_iqtree.out")) as log:
+            iqtree_version = log.readline().strip()
+        with open(os.path.join(self.args.out, "run_info.txt"), "w") as info:
+            info.write(
+                f"ancseq version {__version__}\n"
+                f"{iqtree_version}\n"
+                f"Started: {started_at}\n"
+                f"Command: {shlex.join(sys.argv)}\n"
+            )
+
     def run(self):
+        started_at = datetime.now().astimezone().isoformat(timespec="seconds")
         print(time_stamp(), "Start to run ancseq.", flush=True)
         os.mkdir(self.args.out)
         if self.args.asr_only:
@@ -543,6 +558,7 @@ class Ancseq:
             self.sort_ambiguous_aa()
         self.copy_treefile()
         self.gzip_table()
+        self.write_run_info(started_at)
         print(time_stamp(), "ancseq successfully finished!", flush=True)
 
 
