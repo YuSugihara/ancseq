@@ -1,5 +1,5 @@
 # ancseq
-#### Version 1.3.1
+#### Version 1.4.0
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YuSugihara/ancseq/blob/main/ancseq_colab.ipynb)
 
@@ -79,7 +79,7 @@ If you install ancseq outside this conda environment, install IQ-TREE separately
 $ ancseq -h
 usage: ancseq -s <ALIGNED_FASTA> -m <MODE> -o <OUT_DIR> [-t <INT>]
 
-ancseq version 1.3.1
+ancseq version 1.4.0
 
 options:
   -h, --help         show this help message and exit
