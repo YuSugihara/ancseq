@@ -31,18 +31,11 @@ ancseq -s data/test_nt.fasta \
        --fast \
        --outgroup AVR-Mgk5_GE16_2
 
-# Example 6: halting calculation of codon probabilities
+# Example 6: running a larger DNA alignment with a fixed tree and model
 
-ancseq -s data/test_nt.fasta \
+ancseq -s data/test_nt_large.fasta \
        -m DNA \
-       -o test_no_codon_prob \
-       --stop-codon-prob
-
-# Example 7: running the full MLP alignment with its original tree and model
-
-ancseq -s data/test_mlp.fasta \
-       -m DNA \
-       -o test_mlp \
+       -o test_nt_large \
        --asr-only \
        --model GTR+F+I+G4 \
-       --outgroup GCA_036507275.1_Cucurbitales_Sicyos_edulis_Helixer_CM071850.1_001929.1
+       --outgroup seq157
