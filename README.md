@@ -1,8 +1,6 @@
 # ancseq
 #### Version 1.3.1
 
-Fixed a bug that omitted the final ancestral node from both FASTA outputs.
-
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YuSugihara/ancseq/blob/main/ancseq_colab.ipynb)
 
 ## Table of contents

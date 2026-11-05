@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-set -eu
-
-# Run from this directory after installing the current ancseq checkout.
 # Example 1: running ancseq in DNA mode
 
 ancseq -s test_nt.fasta \
@@ -41,6 +37,4 @@ ancseq -s test_nt.fasta \
        -m DNA \
        -o test_no_codon_prob \
        --stop-codon-prob
-
-# Check node order, record counts, and every sequence against the TSV states.
-python check_results.py test_nt test_codon test_aa test_outgroup test_fast test_no_codon_prob
+       

@@ -196,12 +196,6 @@ class Ancseq:
         ) as fasta_with_gap, open(
             f"{self.out_dir_30}/ancestral_state_result.fasta", "w"
         ) as fasta:
-            def _write_node(name, sequence):
-                fasta_with_gap.write(f">{name}\n")
-                fasta_with_gap.write(f"{sequence}\n")
-                fasta.write(f">{name}\n")
-                fasta.write(f"{sequence.replace('-', '')}\n")
-
             gap = "---" if self.args.mode == "CODON" else "-"
             previous_node = None
             node_sequence = ""
@@ -219,7 +213,10 @@ class Ancseq:
                         p_1 = float(cols_20[4])
                         if (node_10, site_10) == (node_20, site_20):
                             if previous_node != node_10 and previous_node is not None:
-                                _write_node(previous_node, node_sequence)
+                                fasta_with_gap.write(f">{previous_node}\n")
+                                fasta_with_gap.write(f"{node_sequence}\n")
+                                fasta.write(f">{previous_node}\n")
+                                fasta.write(f"{node_sequence.replace('-', '')}\n")
                                 node_sequence = ""
                             if p_1 > self.args.min_gap_prob:
                                 merged.write(
@@ -274,7 +271,10 @@ class Ancseq:
                         previous_node = None
                         node_sequence = ""
             if previous_node is not None:
-                _write_node(previous_node, node_sequence)
+                fasta_with_gap.write(f">{previous_node}\n")
+                fasta_with_gap.write(f"{node_sequence}\n")
+                fasta.write(f">{previous_node}\n")
+                fasta.write(f"{node_sequence.replace('-', '')}\n")
 
     def calculate_codon_prob(self):
         print(time_stamp(), "Calcurating the probability of codon...", flush=True)
