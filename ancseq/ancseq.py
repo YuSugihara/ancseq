@@ -162,7 +162,7 @@ class Ancseq:
             f"-te {tree} "
             f"-st BIN "
             f"-T {self.args.threads} "
-            f"-blfix "
+            f"-blscale "
             f"-keep_empty_seq "
             f"-m JC2"
         )
@@ -235,6 +235,8 @@ class Ancseq:
                                 )
                                 node_sequence += gap
                             else:
+                                if set(state) == {"-"}:
+                                    state = state_labels[probs.index(max(probs))]
                                 merged.write(
                                     "{}\t{}\t{}\t{}\t{:.4f}\n".format(
                                         node_10,
@@ -262,6 +264,7 @@ class Ancseq:
                             )
                             sys.exit(1)
                     else:
+                        state_labels = [p.replace("p_", "") for p in cols_10[3:]]
                         merged.write(
                             "Node\tSite\tState\t{}\t{}\n".format(
                                 "\t".join([p.replace("p_", "") for p in cols_10[3:]]),

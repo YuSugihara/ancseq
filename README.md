@@ -332,7 +332,7 @@ iqtree -asr \
        -te /OUT_DIR/00_tree/${INPUT_FASTA}.treefile \
        -st BIN \
        -T ${NUM_THREADS} \
-       -blfix \
+       -blscale \
        -m JC2 \
        -o ${OUTGROUP} \
        -keep_empty_seq \
@@ -350,7 +350,7 @@ iqtree -asr \
 
 `-T` : Number of threads.
 
-`-blfix` : Fix branch lengths of tree passed via `-t` or `-te`.
+`-blscale` : Scale branch lengths of the tree passed via `-te` by a single factor estimated from the binary alignment.
 
 `-m JC2` : Jukes-Cantor type binary model.
 
