@@ -18,6 +18,14 @@ from ancseq.utils import time_stamp, clean_cmd, call_log
 # Define reusable nucleotide tuple (order preserved for deterministic output).
 NUCLEOTIDES = ("A", "C", "G", "T")
 
+# Translation of the 64 codons, computed once.
+CODON_TO_AA = {
+    f"{n1}{n2}{n3}": str(Seq(f"{n1}{n2}{n3}").translate())
+    for n1 in NUCLEOTIDES
+    for n2 in NUCLEOTIDES
+    for n3 in NUCLEOTIDES
+}
+
 
 class Ancseq:
     def __init__(self, args):
@@ -392,7 +400,7 @@ class Ancseq:
                     del codon_probs["---"]
                     aa_probs = {}
                     for k, v in codon_probs.items():
-                        aa = Seq(k).translate()[0]
+                        aa = CODON_TO_AA[k]
                         if aa not in aa_probs:
                             aa_probs[aa] = v
                         else:
@@ -483,25 +491,25 @@ class Ancseq:
         marged_prefix = os.path.join(self.out_dir_30, "ancestral_state_result")
         if os.path.isfile(statefile_10):
             with open(statefile_10, "rb") as f_in, gzip.open(
-                f"{statefile_10}.gz", "wb"
+                f"{statefile_10}.gz", "wb", compresslevel=6
             ) as f_out:
                 shutil.copyfileobj(f_in, f_out)
             os.remove(statefile_10)
         if os.path.isfile(statefile_20):
             with open(statefile_20, "rb") as f_in, gzip.open(
-                f"{statefile_20}.gz", "wb"
+                f"{statefile_20}.gz", "wb", compresslevel=6
             ) as f_out:
                 shutil.copyfileobj(f_in, f_out)
             os.remove(statefile_20)
         if os.path.isfile(f"{marged_prefix}.tsv"):
             with open(f"{marged_prefix}.tsv", "rb") as f_in, gzip.open(
-                f"{marged_prefix}.tsv.gz", "wb"
+                f"{marged_prefix}.tsv.gz", "wb", compresslevel=6
             ) as f_out:
                 shutil.copyfileobj(f_in, f_out)
             os.remove(f"{marged_prefix}.tsv")
         if os.path.isfile(f"{marged_prefix}.codon_prob.tsv"):
             with open(f"{marged_prefix}.codon_prob.tsv", "rb") as f_in, gzip.open(
-                f"{marged_prefix}.codon_prob.tsv.gz", "wb"
+                f"{marged_prefix}.codon_prob.tsv.gz", "wb", compresslevel=6
             ) as f_out:
                 shutil.copyfileobj(f_in, f_out)
             os.remove(f"{marged_prefix}.codon_prob.tsv")

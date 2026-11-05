@@ -3,5 +3,7 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
+  - python=3.12
+  - pip
   - iqtree=2.3.6
   - biopython=1.85
