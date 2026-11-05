@@ -1,6 +1,6 @@
 [project]
 name = "ancseq"
-version = "1.3.2"
+version = "1.3.1"
 description = "Ancestral sequence reconstruction with gap-state inference using IQ-TREE"
 readme = "README.md"
 requires-python = ">=3.8"
